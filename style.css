@@ -1,0 +1,146 @@
+/* --- Root Variables for SaaS Branding --- */
+:root {
+    --primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    --primary-glow: rgba(37, 99, 235, 0.4);
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --radius: 16px;
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Base Styles --- */
+body {
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* --- Glassmorphism Cards --- */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+/* --- Premium Buttons --- */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px var(--primary-glow);
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* --- Notion-Style Inputs --- */
+input, textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* --- AI Chat UI --- */
+.ai-fab {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px var(--primary-glow);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 6rem;
+    left: 2rem;
+    width: 350px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    /* Uses glass card styles */
+}
+
+.bubble {
+    max-width: 80%;
+    padding: 0.8rem 1rem;
+    border-radius: 18px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.bubble.ai {
+    background: white;
+    color: var(--text-main);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.bubble.user {
+    background: #2563eb;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+/* --- Layout Grid --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+@media (max-width: 640px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .chat-window {
+        width: calc(100vw - 4rem);
+    }
+}
